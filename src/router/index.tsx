@@ -43,21 +43,21 @@ const AppRoutes = () => {
   return (
     <Suspense
       fallback={
-        <div className="main-layout-skeleton">
-          <header className="header-skeleton">
+        <div>
+          <header >
             <Skeleton width={150} height={40} />
             <Skeleton width={200} height={30} />
             <Skeleton width={100} height={30} />
           </header>
-          <main className="main-skeleton">
+          <main >
             <Skeleton height={400} width="100%" />
-            <div className="grid-skeleton">
+            <div >
               {[...Array(6)].map((_, index) => (
                 <Skeleton key={index} height={300} width={200} />
               ))}
             </div>
           </main>
-          <footer className="footer-skeleton">
+          <footer >
             <Skeleton width={100} height={20} />
           </footer>
         </div>
