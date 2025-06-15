@@ -39,6 +39,6 @@ Movies App is a web application that allows users to browse movies that are curr
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/movies-app.git
-cd movies-app
+git clone https://github.com/vitamin8322/Movie.git
+cd Movie
 npm install
