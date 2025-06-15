@@ -1,0 +1,41 @@
+@use '../themes/variables' as *;
+@use '../themes/colors' as *;
+@use '../themes/mixins' as mixins;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  color: $light-gray;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+  max-width: $xl;
+  margin: 0 auto;
+  width: 100%;
+  background: transparent;
+}
+
+.footer {
+  background: $black-2;
+  color: $gray-1;
+  text-align: center;
+  padding: 16px;
+  font-size: 0.9rem;
+  font-family: $font-nunito-400;
+  border-top: 1px solid $dark-gray;
+}
+
+@include mixins.breakpoint(mobile) {
+  .main {
+    padding: 16px;
+  }
+
+  .footer {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+}

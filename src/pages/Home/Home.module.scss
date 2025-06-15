@@ -1,0 +1,54 @@
+@use "../../themes/colors" as *;
+@use "../../themes/variables" as *;
+
+.container {
+  padding: 24px;
+  max-width: $xl;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  padding: 16px;
+}
+
+.loading,
+.error {
+  width: 100%;
+  padding: 20px;
+  background: $gray-2;
+  border-radius: 8px;
+}
+// Responsive
+@media (max-width: $mobile) {
+  .container {
+    padding: 16px;
+  }
+
+  .movieGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+
+    .tab {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: #{$mobile + 1}) and (max-width: $tablet) {
+  .movieGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+}

@@ -1,0 +1,90 @@
+@use "../../themes/colors" as *;
+@use "../../themes/variables" as *;
+@use "../../themes/mixins" as mixins;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  gap: 16px;
+
+  .arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $black-2;
+    border: none;
+    color: $light-gray;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-color;
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .pageInputContainer {
+    background: $black-2;
+    border-radius: 24px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    color: $light-gray;
+    font-size: 16px;
+    gap: 12px;
+
+    span {
+      color: $gray-1;
+    }
+
+    .pageInput {
+      width: 100px;
+      background: transparent;
+      padding: 6px 8px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      text-align: center;
+
+      input {
+        color: $light-gray;
+        font-size: 16px;
+      }
+
+      &:focus-within {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+// Responsive
+@include mixins.breakpoint(mobile) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .pageInputContainer {
+      padding: 6px 12px;
+
+      .pageInput {
+        width: 60px;
+      }
+    }
+
+    .arrow {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

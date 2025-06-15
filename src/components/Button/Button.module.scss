@@ -1,0 +1,100 @@
+@use "../../themes/colors" as *;
+@use "../../themes/variables" as *;
+@use "../../themes/mixins" as mixins;
+
+.button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-nunito-400;
+  font-weight: 500;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background: $primary-color;
+    color: $white;
+
+    &:hover:not(.disabled) {
+      background: $primary-hover;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.secondary {
+    background: $dark-gray;
+    color: $light-gray;
+
+    &:hover:not(.disabled) {
+      background: $primary-hover;
+
+      transform: translateY(-2px);
+    }
+  }
+
+  &.small {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  &.medium {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  &.large {
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+}
+
+// Responsive
+@include mixins.breakpoint(mobile) {
+  .button {
+    &.small {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    &.medium {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    &.large {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+}
+
+@include mixins.breakpoint(tablet) {
+  .button {
+    &.small {
+      padding: 7px 14px;
+      font-size: 13px;
+    }
+
+    &.medium {
+      padding: 9px 18px;
+      font-size: 15px;
+    }
+
+    &.large {
+      padding: 11px 22px;
+      font-size: 17px;
+    }
+  }
+}

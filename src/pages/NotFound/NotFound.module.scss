@@ -1,0 +1,85 @@
+@use "../../themes/colors" as *;
+@use "../../themes/variables" as *;
+@use "../../themes/mixins" as mixins;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+  height: 100%;
+}
+
+.content {
+  text-align: center;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
+  height: 100%;
+}
+
+.title {
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.message {
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.button {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  width: 100%;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-hover;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.4);
+  }
+}
+
+// Responsive
+@include mixins.breakpoint(mobile) {
+  .title {
+    font-size: 80px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@include mixins.breakpoint(tablet) {
+  .title {
+    font-size: 100px;
+  }
+
+  .subtitle {
+    font-size: 30px;
+  }
+
+  .message {
+    font-size: 17px;
+  }
+}

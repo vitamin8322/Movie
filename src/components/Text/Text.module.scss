@@ -1,0 +1,101 @@
+@use "../../themes/colors" as *;
+@use "../../themes/variables" as *;
+
+.Text {
+  display: inline-block;
+
+  &.R085 {
+    font-size: 0.85rem;
+    font-family: $font-nunito-400 !important;
+  }
+
+  &.R085B {
+    font-size: 0.85rem;
+    font-family: $font-nunito-500 !important;
+  }
+
+  &.R09 {
+    font-size: 0.9rem;
+    font-family: $font-nunito-400 !important;
+  }
+
+  &.R09B {
+    font-size: 0.9rem;
+    font-family: $font-nunito-700 !important;
+  }
+
+  &.R10 {
+    font-size: 1rem;
+    font-family: $font-nunito-500 !important;
+  }
+
+  &.R10B {
+    font-size: 1rem;
+    font-family: $font-nunito-700 !important;
+  }
+
+  &.R12 {
+    font-size: 1.2rem;
+    font-family: $font-nunito-400 !important;
+  }
+
+  &.R14 {
+    font-size: 14px; 
+    font-family: $font-nunito-400 !important;
+  }
+
+  &.R16 {
+    font-size: 16px;
+    font-family: $font-nunito-600 !important;
+  }
+
+  &.R18 {
+    font-size: 1.8rem;
+    font-family: $font-nunito-700 !important;
+  }
+
+  &.R25 {
+    font-size: 2.5rem;
+    font-family: $font-nunito-700 !important;
+  }
+
+  &.color-primary {
+    color: $primary-color;
+  }
+
+  &.color-gray-1 {
+    color: $gray-1;
+  }
+
+  &.color-light-gray {
+    color: $light-gray;
+  }
+
+  &.color-primary-hover {
+    color: $primary-hover;
+  }
+
+  &.color-medium-gray {
+    color: $medium-gray;
+  }
+
+  &.color-dark-medium-gray {
+    color: $dark-medium-gray;
+  }
+
+  &.color-text {
+    color: $text-color;
+  }
+
+  &.color-black {
+    color: $black; 
+  }
+
+  &.color-gray-2 {
+    color: $gray-2; 
+  }
+
+  &.color-white {
+    color: $white;
+  }
+}
