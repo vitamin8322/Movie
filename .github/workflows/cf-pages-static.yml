@@ -2,10 +2,12 @@ name: Deploy to Cloudflare Pages (Static)
 
 on:
   push:
-    branches:
-      - dev
-      - staging
-      - production
+    branches: [dev, staging, production]
+
+permissions:
+  contents: read
+  deployments: write
+  statuses: write
 
 jobs:
   deploy-preview:
