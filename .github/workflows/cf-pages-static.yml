@@ -1,0 +1,60 @@
+name: Deploy to Cloudflare Pages (Static)
+
+on:
+  push:
+    branches: [dev, staging, production]
+
+permissions:
+  contents: read
+  deployments: write
+  statuses: write
+
+jobs:
+  deploy-preview:
+    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    env:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Publish Preview to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: movie              # đổi theo tên project Pages của bạn
+          directory: ./dist                # output build của Vite
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}   # tạo preview theo nhánh hiện tại
+
+  deploy-production:
+    if: github.ref == 'refs/heads/production'
+    runs-on: ubuntu-latest
+    environment: production   # có thể bật Required reviewers để “Approve and deploy”
+    env:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Publish Production to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: movie
+          directory: ./dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: production               # mark deployment là Production (nhánh prod)
