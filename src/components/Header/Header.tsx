@@ -65,7 +65,7 @@ const Header = () => {
         color="primary"
         onClick={() => navigate(RoutePaths.HOME)}
       >
-        Movies App Pro
+        Movies App Prod
       </TextDefault>
       <nav className={styles.nav}>
         <Button
